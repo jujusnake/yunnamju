@@ -1,20 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Welcome from "./pages/Welcome";
-import About from "./pages/About";
 import Layout from "./Layout";
-import Works from "./pages/Works";
-import Contacts from "./pages/Contacts";
+import { routes } from "./routes";
 
 const router = createBrowserRouter([
   {
     path: "/*",
     Component: Layout,
-    children: [
-      { index: true, Component: Welcome },
-      { path: "about", Component: About },
-      { path: "works", Component: Works },
-      { path: "contacts", Component: Contacts },
-    ],
+    children: routes.map((route) => ({
+      index: route.path === "/",
+      path: route.path === "/" ? undefined : route.path,
+      element: route.element,
+    })),
   },
   { path: "*", Component: Root },
 ]);
