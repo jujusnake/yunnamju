@@ -1,21 +1,24 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useLocation, useOutlet } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { routes } from "./routes";
+// import ViewTransitionExample from "./components/viewtransitionexample";
 
 const Layout = () => {
   const location = useLocation();
+  const isWelcome = useMemo(() => location.pathname === "/", [location]);
   const { nodeRef } = routes.find((route) => location.pathname.includes(route.path)) ?? {};
   const currentOutlet = useOutlet();
 
-  const [isSplash, setIsSplash] = useState<boolean>(true);
-  const [showContents, setShowContents] = useState<boolean>(false);
+  const [isSplash, setIsSplash] = useState<boolean>(isWelcome);
+  const [showContents, setShowContents] = useState<boolean>(!isWelcome);
+  const [showSideNav, setSideNav] = useState<boolean>(!isWelcome);
 
   return (
     <>
       {/* Splash */}
-      {showContents === false && (
-        <div className="fixed top-0 left-0 w-full h-dynamic flex items-center justify-center z-50 font-montserrat">
+      {isWelcome && showContents === false && (
+        <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-dynamic font-montserrat">
           <div
             className={`w-[calc(100vw_-_48px)] h-[calc(100vh_-_48px)] flex flex-col items-center justify-center ${
               isSplash ? "gap-6 md:gap-8" : "gap-0"
@@ -44,19 +47,27 @@ const Layout = () => {
       )}
 
       {/* Contents */}
-      <div className={`w-full h-dynamic p-6 font-montserrat`}>
+      {isSplash === false && (
         <div
-          className={`w-full h-full overflow-hidden ${
-            showContents ? "border border-border-1" : "border border-transparent"
-          }`}
+          className={`w-full h-dynamic p-6 font-montserrat animate-[fade_500ms_ease-in-out_800ms_forwards] opacity-0`}
         >
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/works">Works</Link>
-          <Link to="/contacts">Contacts</Link>
+          <div
+            className={`w-full h-full overflow-hidden ${
+              showContents ? "border border-border-1" : "border border-transparent"
+            } flex items-center justify-center`}
+          >
+            {/* Side Navigation */}
+            {showSideNav && (
+              <div className="w-[300px]">
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <Link to="/works">Works</Link>
+                <Link to="/contacts">Contacts</Link>
+              </div>
+            )}
 
-          {/* https://reactcommunity.org/react-transition-group/with-react-router/ */}
-          <div className="relative">
+            {/* Animated Outlet */}
+            {/* https://reactcommunity.org/react-transition-group/with-react-router/ */}
             {nodeRef !== undefined && (
               <SwitchTransition>
                 <CSSTransition
@@ -65,9 +76,15 @@ const Layout = () => {
                   timeout={700}
                   classNames="page"
                   unmountOnExit
+                  onEnter={() => location.pathname !== "/" && setSideNav(true)}
+                  onExited={() => location.pathname !== "/" && setSideNav(false)}
                 >
                   {(state: string) => (
-                    <div ref={nodeRef as React.RefObject<HTMLDivElement>} id={state} className="page">
+                    <div
+                      ref={nodeRef as React.RefObject<HTMLDivElement>}
+                      id={state}
+                      className={`${isWelcome ? undefined : "w-[calc(100%_-_300px)]"} page`}
+                    >
                       {currentOutlet}
                     </div>
                   )}
@@ -76,7 +93,7 @@ const Layout = () => {
             )}
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

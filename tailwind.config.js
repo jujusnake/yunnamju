@@ -33,9 +33,18 @@ export default {
             width: "100%",
           },
         },
+        fade: {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
       },
       animation: {
         label: "label 0.5s ease-in-out",
+        fadein: "label 0.5s ease-in-out 0s forwards",
       },
     },
   },

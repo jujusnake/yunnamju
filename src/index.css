@@ -11,13 +11,9 @@ html {
   font-smooth: never;
 }
 
-.page {
-  position: absolute;
-}
-
 .page-enter {
   opacity: 0;
-  transform: translateY(-100px) scale(1.1);
+  transform: translateY(-100px) scale(1);
 }
 
 .page-enter-active {
@@ -33,6 +29,6 @@ html {
 
 .page-exit-active {
   opacity: 0;
-  transform: translateY(100px) scale(0.9);
+  transform: translateY(100px) scale(1);
   transition: opacity 700ms, transform 700ms;
 }
