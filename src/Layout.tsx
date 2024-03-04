@@ -3,7 +3,6 @@ import { useLocation, useOutlet } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { routes } from "./routes";
 import SideNavigation from "./components/SideNavigation";
-import Scrollbars from "react-custom-scrollbars-2";
 // import ViewTransitionExample from "./components/viewtransitionexample";
 
 const Layout = () => {
@@ -79,15 +78,13 @@ const Layout = () => {
                   onExited={() => location.pathname !== "/" && setSideNav(false)}
                 >
                   {(state: string) => (
-                    <Scrollbars autoHide>
-                      <div
-                        ref={nodeRef as React.RefObject<HTMLDivElement>}
-                        id={state}
-                        className={`${isWelcome ? undefined : "flex-grow w-full  overflow-auto"}`}
-                      >
-                        {currentOutlet}
-                      </div>
-                    </Scrollbars>
+                    <div
+                      ref={nodeRef as React.RefObject<HTMLDivElement>}
+                      id={state}
+                      className={`flex-grow w-full overflow-hidden h-full`}
+                    >
+                      {currentOutlet}
+                    </div>
                   )}
                 </CSSTransition>
               </SwitchTransition>
