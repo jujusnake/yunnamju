@@ -39,7 +39,7 @@ const Layout = () => {
                 isSplash ? "visible scale-100  max-h-[100px]" : "invisible max-h-0"
               }`}
             >
-              Namju Yun
+              Yun, Namju
               <br />
               Front-end Developer
             </div>
