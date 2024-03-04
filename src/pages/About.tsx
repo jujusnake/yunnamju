@@ -4,7 +4,8 @@ import { Briefcase, Mail, MapPin } from "react-feather";
 const About = () => {
   return (
     <div>
-      <main className={`w-full h-full absolute top-0 left-0 overflow-hidden`}>
+      asdf
+      {/* <main className={`w-full h-full absolute top-0 left-0 overflow-hidden`}>
         <div className="flex flex-col h-full p-6 overflow-auto md:p-12 md:flex-row-reverse gap-11 md:gap-12">
           <div className="flex flex-col items-center flex-shrink-0 md:items-end">
             <picture>
@@ -72,7 +73,7 @@ const About = () => {
             </div>
           </section>
         </div>
-      </main>
+      </main> */}
     </div>
   );
 };

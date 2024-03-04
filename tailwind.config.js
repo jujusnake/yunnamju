@@ -27,10 +27,18 @@ export default {
       keyframes: {
         label: {
           from: {
-            width: "0%",
+            backgroundSize: "0% 6px",
           },
           to: {
-            width: "100%",
+            backgroundSize: "100% 6px",
+          },
+        },
+        "label-sm": {
+          from: {
+            backgroundSize: "0% 3px",
+          },
+          to: {
+            backgroundSize: "100% 3px",
           },
         },
         fade: {
@@ -43,7 +51,6 @@ export default {
         },
       },
       animation: {
-        label: "label 0.5s ease-in-out",
         fadein: "label 0.5s ease-in-out 0s forwards",
       },
     },
