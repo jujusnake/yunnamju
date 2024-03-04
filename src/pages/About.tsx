@@ -54,7 +54,7 @@ const About = () => {
           <div>
             <div className="md:mb-1">My current passions</div>
             <ul className="ml-3.5 md:ml-5 list-outside">
-              <li className="list-disc md:mb-1">Computer Science Studies (part-time college student!)</li>
+              <li className="list-disc md:mb-1">Computer Science (pursuing my 3rd bachelor's degree)</li>
               <li className="list-disc md:mb-1">Interactive Web animations, 3D (GSAP + three.js)</li>
               <li className="list-disc md:mb-1">Mobile app Development (React Native)</li>
             </ul>
