@@ -4,6 +4,7 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { routes } from "./routes";
 import SideNavigation from "./components/SideNavigation";
 // import ViewTransitionExample from "./components/viewtransitionexample";
+import { Analytics } from "@vercel/analytics/react";
 
 const Layout = () => {
   const location = useLocation();
@@ -92,6 +93,7 @@ const Layout = () => {
           </div>
         </div>
       )}
+      <Analytics />
     </>
   );
 };
