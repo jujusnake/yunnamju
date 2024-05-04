@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import Scrollbars from "react-custom-scrollbars-2";
 import PicturePngWebp from "../components/PicturePngWebp";
 import { WORKS_PERSONAL, WORKS_PROFESSIONAL, WorkItem } from "../constants/works";
+import { ExternalLink } from "react-feather";
 
 const Works = () => {
   const [currTab, setCurrTab] = useState<"professional" | "personal">("professional");
@@ -60,7 +61,18 @@ const WorksBlock = ({ item }: { item: WorkItem }) => {
   return (
     <article className="grid grid-cols-1 py-6 border-b border-border-1 last:border-b-0 md:py-9 md:grid-cols-[repeat(2,_auto)] md:grid-rows-2 md:justify-between md:gap-x-3">
       <div>
-        <h1 className="font-semibold text-[16px] leading-[150%] mb-0.5 md:text-[20px]">{item.title}</h1>
+        <h1>
+          <a
+            className="font-semibold text-[16px] leading-[150%] mb-0.5 md:text-[20px] flex items-center gap-2 data-[link='true']:underline data-[link='true']:md:no-underline data-[link='true']:md:hover:underline data-[link='true']:underline-offset-2"
+            data-link={item.link !== undefined}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.title}
+            {item.link && <ExternalLink size={18} />}
+          </a>
+        </h1>
         <div className="text-[12px] leading-[150%] font-light flex items-center gap-3 mb-3 md:gap-4 md:text-[14px] md:mb-1">
           {item.sub.map((subItem) => (
             <div key={`${item.title}-sub-${subItem}`}>{subItem}</div>

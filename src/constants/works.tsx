@@ -6,6 +6,7 @@ export type WorkItem = {
   desc: ReactNode;
   src: string;
   alt: string;
+  link?: string;
 };
 
 export const WORKS_PROFESSIONAL: WorkItem[] = [
@@ -21,6 +22,7 @@ export const WORKS_PROFESSIONAL: WorkItem[] = [
     ),
     src: "/works/professional/plicar-demo",
     alt: "Plicar Impact Demo - Click for more detail",
+    link: "https://demo.plicar.ai/fashion",
   },
   {
     title: "Reconlabs UI (RUI)",
@@ -47,6 +49,7 @@ export const WORKS_PROFESSIONAL: WorkItem[] = [
     ),
     src: "/works/professional/zepeto",
     alt: "3Dpresso and ZEPETO - Click for more detail",
+    link: "https://zepeto.3dpresso.ai/",
   },
   {
     title: "3Dpresso",
@@ -60,6 +63,7 @@ export const WORKS_PROFESSIONAL: WorkItem[] = [
     ),
     src: "/works/professional/3dpresso",
     alt: "3Dpresso - Click for more detail",
+    link: "https://3dpresso.ai/",
   },
 ];
 
@@ -76,6 +80,7 @@ export const WORKS_PERSONAL: WorkItem[] = [
     ),
     src: "/works/personal/ainokatachi",
     alt: "Ainokatachi - Click for more detail",
+    link: "https://ainokatachi-web.vercel.app/",
   },
   {
     title: "Open House Invitation",
@@ -89,5 +94,6 @@ export const WORKS_PERSONAL: WorkItem[] = [
     ),
     src: "/works/personal/open_house",
     alt: "Open House Invitation - Click for more detail",
+    link: "https://open-house-invitation.vercel.app/",
   },
 ];
