@@ -63,7 +63,7 @@ const About = () => {
           <div className="flex justify-end pb-6">
             <a
               className="font-normal text-[14px] md:text-[18px] leading-[150%] text-typo-main cursor-pointer"
-              href="/resume_en.pdf"
+              href="/resume_kr.pdf"
               target="_blank"
             >
               <EasyUnderlineHover>Download my resume →</EasyUnderlineHover>
