@@ -19,6 +19,7 @@ export default {
         },
         layer: {
           back: "#F6F3EF",
+          front: "#edebe8",
         },
         label: {
           blue: "rgba(35, 101, 228, 0.20)",
